@@ -18,7 +18,7 @@ small set of configuration parameters. This framework also enables offload of
 other QUIC functions to trusted intermediaries, given the explicit cooperation
 of the QUIC server. 
     " name="description">
-<meta content="xml2rfc 2.46.0" name="generator">
+<meta content="xml2rfc 2.47.0" name="generator">
 <meta content="draft-ietf-quic-load-balancers-04" name="ietf.draft">
 <link href="draft-ietf-quic-load-balancers.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -82,9 +82,6 @@ p {
   padding: 0;
   margin: 0.5em 0;
   text-align: left;
-}
-div, span {
-  position: relative;
 }
 div {
   margin: 0;
@@ -277,9 +274,19 @@ cite {
 
 /* tables */
 table {
-  width: 100%;
+  max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
 }
 thead, tbody {
   border: 1px solid var(--line-color);
@@ -290,8 +297,7 @@ th, td {
   padding: 5px 10px;
 }
 th {
-  text-align: left;
-  background-color: #eee;
+  background-color: var(--line-color);
 }
 tr:nth-child(2n) > td {
   background-color: var(--background-color);
@@ -310,8 +316,6 @@ table caption {
   padding: 3px 1em;
 }
 table p {
-  /* XXX to avoid bottom margin on table row signifiers. If paragraphs should
-     be allowed within tables more generally, it would be far better to select on a class. */
   margin: 0;
 }
 
@@ -769,21 +773,6 @@ address div.right {
   text-align: right;
 }
 
-/* Provide table alignment support.  We can't use the alignX classes above
-   since they do unwanted things with caption and other styling. */
-table.right {
- margin-left: auto;
- margin-right: 0;
-}
-table.center {
- margin-left: auto;
- margin-right: auto;
-}
-table.left {
- margin-left: 0;
- margin-right: auto;
-}
-
 /* Give the table caption label the same styling as the figcaption */
 
 @media print {
@@ -819,11 +808,11 @@ table.left {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">QUIC-LB</td>
-<td class="right">July 2020</td>
+<td class="right">August 2020</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Duke &amp; Banks</td>
-<td class="center">Expires 21 January 2021</td>
+<td class="center">Expires 14 February 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -836,12 +825,12 @@ table.left {
 <dd class="internet-draft">draft-ietf-quic-load-balancers-04</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2020-07-20" class="published">20 July 2020</time>
+<time datetime="2020-08-13" class="published">13 August 2020</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-01-21">21 January 2021</time></dd>
+<dd class="expires"><time datetime="2021-02-14">14 February 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -897,7 +886,7 @@ of the QUIC server.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 21 January 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 February 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -925,250 +914,239 @@ of the QUIC server.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<nav class="toc"><ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.1.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-protocol-objectives" class="xref">Protocol Objectives</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.2.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-simplicity" class="xref">Simplicity</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.2">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-security" class="xref">Security</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-first-cid-octet" class="xref">First CID octet</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-config-rotation" class="xref">Config Rotation</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.2">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-configuration-failover" class="xref">Configuration Failover</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.3">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-length-self-description" class="xref">Length Self-Description</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.4">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.4">
                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-format" class="xref">Format</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-routing-algorithms" class="xref">Routing Algorithms</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-plaintext-cid-algorithm" class="xref">Plaintext CID Algorithm</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1.2.1">
                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="xref">4.1.1</a>.  <a href="#name-configuration-agent-actions" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.4.2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1.2.2">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1.2.2">
                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="xref">4.1.2</a>.  <a href="#name-load-balancer-actions" class="xref">Load Balancer Actions</a><a href="#section-toc.1-1.4.2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1.2.3">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1.2.3">
                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="xref">4.1.3</a>.  <a href="#name-server-actions" class="xref">Server Actions</a><a href="#section-toc.1-1.4.2.1.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-obfuscated-cid-algorithm" class="xref">Obfuscated CID Algorithm</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.1">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-stream-cipher-cid-algorithm" class="xref">Stream Cipher CID Algorithm</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2.2.1">
                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-configuration-agent-actions-2" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.4.2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.2">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2.2.2">
                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="xref">4.2.2</a>.  <a href="#name-load-balancer-actions-2" class="xref">Load Balancer Actions</a><a href="#section-toc.1-1.4.2.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.3">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2.2.3">
                     <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="xref">4.2.3</a>.  <a href="#name-server-actions-2" class="xref">Server Actions</a><a href="#section-toc.1-1.4.2.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.3">
-                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-stream-cipher-cid-algorithm" class="xref">Stream Cipher CID Algorithm</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.3.2.1">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-block-cipher-cid-algorithm" class="xref">Block Cipher CID Algorithm</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.4.2.3.2.1">
                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-configuration-agent-actions-3" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.3.2.2">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.3.2.2">
                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-load-balancer-actions-3" class="xref">Load Balancer Actions</a><a href="#section-toc.1-1.4.2.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.3.2.3">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.3.2.3">
                     <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="xref">4.3.3</a>.  <a href="#name-server-actions-3" class="xref">Server Actions</a><a href="#section-toc.1-1.4.2.3.2.3.1" class="pilcrow">¶</a></p>
-</li>
-                </ul>
-</li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.4">
-                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-block-cipher-cid-algorithm" class="xref">Block Cipher CID Algorithm</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.4.2.1">
-                    <p id="section-toc.1-1.4.2.4.2.1.1"><a href="#section-4.4.1" class="xref">4.4.1</a>.  <a href="#name-configuration-agent-actions-4" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.4.2.4.2.1.1" class="pilcrow">¶</a></p>
-</li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.4.2.2">
-                    <p id="section-toc.1-1.4.2.4.2.2.1"><a href="#section-4.4.2" class="xref">4.4.2</a>.  <a href="#name-load-balancer-actions-4" class="xref">Load Balancer Actions</a><a href="#section-toc.1-1.4.2.4.2.2.1" class="pilcrow">¶</a></p>
-</li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.4.2.3">
-                    <p id="section-toc.1-1.4.2.4.2.3.1"><a href="#section-4.4.3" class="xref">4.4.3</a>.  <a href="#name-server-actions-4" class="xref">Server Actions</a><a href="#section-toc.1-1.4.2.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-icmp-processing" class="xref">ICMP Processing</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-retry-service" class="xref">Retry Service</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.6.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.6.2.1">
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-common-requirements" class="xref">Common Requirements</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.2">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-no-shared-state-retry-servi" class="xref">No-Shared-State Retry Service</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.6.2.2.2.1">
-                    <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="xref">6.2.1</a>.  <a href="#name-configuration-agent-actions-5" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.6.2.2.2.1.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.6.2.2.2.1">
+                    <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="xref">6.2.1</a>.  <a href="#name-configuration-agent-actions-4" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.6.2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.2.2.2">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.2.2.2">
                     <p id="section-toc.1-1.6.2.2.2.2.1"><a href="#section-6.2.2" class="xref">6.2.2</a>.  <a href="#name-service-requirements" class="xref">Service Requirements</a><a href="#section-toc.1-1.6.2.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.2.2.3">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.2.2.3">
                     <p id="section-toc.1-1.6.2.2.2.3.1"><a href="#section-6.2.3" class="xref">6.2.3</a>.  <a href="#name-server-requirements" class="xref">Server Requirements</a><a href="#section-toc.1-1.6.2.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.3">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.3">
                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-shared-state-retry-service" class="xref">Shared-State Retry Service</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.6.2.3.2.1">
-                    <p id="section-toc.1-1.6.2.3.2.1.1"><a href="#section-6.3.1" class="xref">6.3.1</a>.  <a href="#name-configuration-agent-actions-6" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.6.2.3.2.1.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.6.2.3.2.1">
+                    <p id="section-toc.1-1.6.2.3.2.1.1"><a href="#section-6.3.1" class="xref">6.3.1</a>.  <a href="#name-configuration-agent-actions-5" class="xref">Configuration Agent Actions</a><a href="#section-toc.1-1.6.2.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.3.2.2">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.3.2.2">
                     <p id="section-toc.1-1.6.2.3.2.2.1"><a href="#section-6.3.2" class="xref">6.3.2</a>.  <a href="#name-service-requirements-2" class="xref">Service Requirements</a><a href="#section-toc.1-1.6.2.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.3.2.3">
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.3.2.3">
                     <p id="section-toc.1-1.6.2.3.2.3.1"><a href="#section-6.3.3" class="xref">6.3.3</a>.  <a href="#name-server-requirements-2" class="xref">Server Requirements</a><a href="#section-toc.1-1.6.2.3.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-configuration-requirements" class="xref">Configuration Requirements</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-additional-use-cases" class="xref">Additional Use Cases</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.8.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.8.2.1">
                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-load-balancer-chains" class="xref">Load balancer chains</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.8.2.2">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.8.2.2">
                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-moving-connections-between-" class="xref">Moving connections between servers</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-version-invariance-of-quic-" class="xref">Version Invariance of QUIC-LB</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.10.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.10.2.1">
                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-attackers-not-between-the-l" class="xref">Attackers not between the load balancer and server</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.10.2.2">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.10.2.2">
                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-attackers-between-the-load-" class="xref">Attackers between the load balancer and server</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.10.2.3">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.10.2.3">
                 <p id="section-toc.1-1.10.2.3.1"><a href="#section-10.3" class="xref">10.3</a>.  <a href="#name-multiple-configuration-ids" class="xref">Multiple Configuration IDs</a><a href="#section-toc.1-1.10.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.10.2.4">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.10.2.4">
                 <p id="section-toc.1-1.10.2.4.1"><a href="#section-10.4" class="xref">10.4</a>.  <a href="#name-limited-configuration-scope" class="xref">Limited configuration scope</a><a href="#section-toc.1-1.10.2.4.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.10.2.5">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.10.2.5">
                 <p id="section-toc.1-1.10.2.5.1"><a href="#section-10.5" class="xref">10.5</a>.  <a href="#name-stateless-reset-oracle" class="xref">Stateless Reset Oracle</a><a href="#section-toc.1-1.10.2.5.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.11">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.12">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.12">
             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.12.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.12.2.1">
                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.12.2.2">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.12.2.2">
                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.13">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.13">
             <p id="section-toc.1-1.13.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-load-balancer-test-vectors" class="xref">Load Balancer Test Vectors</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.13.2.1">
-                <p id="section-toc.1-1.13.2.1.1"><a href="#section-a.1" class="xref">A.1</a>.  <a href="#name-obfuscated-connection-id-al" class="xref">Obfuscated Connection ID Algorithm</a><a href="#section-toc.1-1.13.2.1.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.13.2.1">
+                <p id="section-toc.1-1.13.2.1.1"><a href="#section-a.1" class="xref">A.1</a>.  <a href="#name-plaintext-connection-id-alg" class="xref">Plaintext Connection ID Algorithm</a><a href="#section-toc.1-1.13.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.13.2.2">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.13.2.2">
                 <p id="section-toc.1-1.13.2.2.1"><a href="#section-a.2" class="xref">A.2</a>.  <a href="#name-stream-cipher-connection-id" class="xref">Stream Cipher Connection ID Algorithm</a><a href="#section-toc.1-1.13.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.13.2.3">
+              <li class="toc ulEmpty compact" id="section-toc.1-1.13.2.3">
                 <p id="section-toc.1-1.13.2.3.1"><a href="#section-a.3" class="xref">A.3</a>.  <a href="#name-block-cipher-connection-id-" class="xref">Block Cipher Connection ID Algorithm</a><a href="#section-toc.1-1.13.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.14">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.14">
             <p id="section-toc.1-1.14.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.15">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.15">
             <p id="section-toc.1-1.15.1"><a href="#section-appendix.c" class="xref">Appendix C</a>.  <a href="#name-change-log" class="xref">Change Log</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.15.2.1">
-                <p id="section-toc.1-1.15.2.1.1"><a href="#section-c.1" class="xref">C.1</a>.  <a href="#name-since-draft-ietf-quic-load-" class="xref">since-draft-ietf-quic-load-balancers-03</a><a href="#section-toc.1-1.15.2.1.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.15.2.1">
+                <p id="section-toc.1-1.15.2.1.1"><a href="#section-c.1" class="xref">C.1</a>.  <a href="#name-since-draft-ietf-quic-load-" class="xref">since draft-ietf-quic-load-balancers-04</a><a href="#section-toc.1-1.15.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.2">
-                <p id="section-toc.1-1.15.2.2.1"><a href="#section-c.2" class="xref">C.2</a>.  <a href="#name-since-draft-ietf-quic-load-b" class="xref">since-draft-ietf-quic-load-balancers-02</a><a href="#section-toc.1-1.15.2.2.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.2">
+                <p id="section-toc.1-1.15.2.2.1"><a href="#section-c.2" class="xref">C.2</a>.  <a href="#name-since-draft-ietf-quic-load-b" class="xref">since-draft-ietf-quic-load-balancers-03</a><a href="#section-toc.1-1.15.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.3">
-                <p id="section-toc.1-1.15.2.3.1"><a href="#section-c.3" class="xref">C.3</a>.  <a href="#name-since-draft-ietf-quic-load-ba" class="xref">since-draft-ietf-quic-load-balancers-01</a><a href="#section-toc.1-1.15.2.3.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.3">
+                <p id="section-toc.1-1.15.2.3.1"><a href="#section-c.3" class="xref">C.3</a>.  <a href="#name-since-draft-ietf-quic-load-ba" class="xref">since-draft-ietf-quic-load-balancers-02</a><a href="#section-toc.1-1.15.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.4">
-                <p id="section-toc.1-1.15.2.4.1"><a href="#section-c.4" class="xref">C.4</a>.  <a href="#name-since-draft-ietf-quic-load-bal" class="xref">since-draft-ietf-quic-load-balancers-00</a><a href="#section-toc.1-1.15.2.4.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.4">
+                <p id="section-toc.1-1.15.2.4.1"><a href="#section-c.4" class="xref">C.4</a>.  <a href="#name-since-draft-ietf-quic-load-bal" class="xref">since-draft-ietf-quic-load-balancers-01</a><a href="#section-toc.1-1.15.2.4.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.5">
-                <p id="section-toc.1-1.15.2.5.1"><a href="#section-c.5" class="xref">C.5</a>.  <a href="#name-since-draft-duke-quic-load-" class="xref">Since draft-duke-quic-load-balancers-06</a><a href="#section-toc.1-1.15.2.5.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.5">
+                <p id="section-toc.1-1.15.2.5.1"><a href="#section-c.5" class="xref">C.5</a>.  <a href="#name-since-draft-ietf-quic-load-bala" class="xref">since-draft-ietf-quic-load-balancers-00</a><a href="#section-toc.1-1.15.2.5.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.6">
-                <p id="section-toc.1-1.15.2.6.1"><a href="#section-c.6" class="xref">C.6</a>.  <a href="#name-since-draft-duke-quic-load-b" class="xref">Since draft-duke-quic-load-balancers-05</a><a href="#section-toc.1-1.15.2.6.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.6">
+                <p id="section-toc.1-1.15.2.6.1"><a href="#section-c.6" class="xref">C.6</a>.  <a href="#name-since-draft-duke-quic-load-" class="xref">Since draft-duke-quic-load-balancers-06</a><a href="#section-toc.1-1.15.2.6.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.7">
-                <p id="section-toc.1-1.15.2.7.1"><a href="#section-c.7" class="xref">C.7</a>.  <a href="#name-since-draft-duke-quic-load-ba" class="xref">Since draft-duke-quic-load-balancers-04</a><a href="#section-toc.1-1.15.2.7.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.7">
+                <p id="section-toc.1-1.15.2.7.1"><a href="#section-c.7" class="xref">C.7</a>.  <a href="#name-since-draft-duke-quic-load-b" class="xref">Since draft-duke-quic-load-balancers-05</a><a href="#section-toc.1-1.15.2.7.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.8">
-                <p id="section-toc.1-1.15.2.8.1"><a href="#section-c.8" class="xref">C.8</a>.  <a href="#name-since-draft-duke-quic-load-bal" class="xref">Since draft-duke-quic-load-balancers-03</a><a href="#section-toc.1-1.15.2.8.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.8">
+                <p id="section-toc.1-1.15.2.8.1"><a href="#section-c.8" class="xref">C.8</a>.  <a href="#name-since-draft-duke-quic-load-ba" class="xref">Since draft-duke-quic-load-balancers-04</a><a href="#section-toc.1-1.15.2.8.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.9">
-                <p id="section-toc.1-1.15.2.9.1"><a href="#section-c.9" class="xref">C.9</a>.  <a href="#name-since-draft-duke-quic-load-bala" class="xref">Since draft-duke-quic-load-balancers-02</a><a href="#section-toc.1-1.15.2.9.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.9">
+                <p id="section-toc.1-1.15.2.9.1"><a href="#section-c.9" class="xref">C.9</a>.  <a href="#name-since-draft-duke-quic-load-bal" class="xref">Since draft-duke-quic-load-balancers-03</a><a href="#section-toc.1-1.15.2.9.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.10">
-                <p id="section-toc.1-1.15.2.10.1"><a href="#section-c.10" class="xref">C.10</a>. <a href="#name-since-draft-duke-quic-load-balan" class="xref">Since draft-duke-quic-load-balancers-01</a><a href="#section-toc.1-1.15.2.10.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.10">
+                <p id="section-toc.1-1.15.2.10.1"><a href="#section-c.10" class="xref">C.10</a>. <a href="#name-since-draft-duke-quic-load-bala" class="xref">Since draft-duke-quic-load-balancers-02</a><a href="#section-toc.1-1.15.2.10.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.15.2.11">
-                <p id="section-toc.1-1.15.2.11.1"><a href="#section-c.11" class="xref">C.11</a>. <a href="#name-since-draft-duke-quic-load-balanc" class="xref">Since draft-duke-quic-load-balancers-00</a><a href="#section-toc.1-1.15.2.11.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.11">
+                <p id="section-toc.1-1.15.2.11.1"><a href="#section-c.11" class="xref">C.11</a>. <a href="#name-since-draft-duke-quic-load-balan" class="xref">Since draft-duke-quic-load-balancers-01</a><a href="#section-toc.1-1.15.2.11.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.12">
+                <p id="section-toc.1-1.15.2.12.1"><a href="#section-c.12" class="xref">C.12</a>. <a href="#name-since-draft-duke-quic-load-balanc" class="xref">Since draft-duke-quic-load-balancers-00</a><a href="#section-toc.1-1.15.2.12.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.16">
+          <li class="toc ulEmpty compact" id="section-toc.1-1.16">
             <p id="section-toc.1-1.16.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
@@ -1492,100 +1470,17 @@ other bits SHOULD appear random to observers.<a href="#section-4.1.3-2" class="p
 </div>
 </section>
 </div>
-<div id="obfuscated-cid-algorithm">
+<div id="stream-cipher-cid-algorithm">
 <section id="section-4.2">
-        <h3 id="name-obfuscated-cid-algorithm">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-obfuscated-cid-algorithm" class="section-name selfRef">Obfuscated CID Algorithm</a>
+        <h3 id="name-stream-cipher-cid-algorithm">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-stream-cipher-cid-algorithm" class="section-name selfRef">Stream Cipher CID Algorithm</a>
         </h3>
-<p id="section-4.2-1">The Obfuscated CID Algorithm makes an attempt to obscure the mapping of
-connections to servers to reduce linkability, while not requiring true
-encryption and decryption. The format is depicted in the figure below.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<span id="name-obfuscated-cid-format"></span><div id="obfuscated-cid-format">
+<p id="section-4.2-1">The Stream Cipher CID algorithm provides cryptographic protection at the cost of
+additional per-packet processing at the load balancer to decrypt every incoming
+connection ID. The CID format is depicted below.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<span id="name-stream-cipher-cid-format"></span><div id="stream-cipher-cid-format">
 <figure id="figure-3">
           <div class="artwork art-text alignLeft" id="section-4.2-2.1">
-<pre>
-0                   1                   2                   3
-0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|  First octet  |  Mixed routing and non-routing bits (64..152) |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-</pre>
-</div>
-<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
-<a href="#name-obfuscated-cid-format" class="selfRef">Obfuscated CID Format</a>
-          </figcaption></figure>
-</div>
-<div id="configuration-agent-actions-1">
-<section id="section-4.2.1">
-          <h4 id="name-configuration-agent-actions-2">
-<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-configuration-agent-actions-2" class="section-name selfRef">Configuration Agent Actions</a>
-          </h4>
-<p id="section-4.2.1-1">The configuration agent selects an arbitrary set of bits of the server
-connection ID that it will use to route to a given server, called the "routing
-bits". The number of bits MUST have enough entropy to have a different code
-point for each server, and SHOULD have enough entropy so that there are many
-codepoints for each server.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.2.1-2">The configuration agent MUST NOT select a routing mask with more than 136
-routing bits set to 1, which allows for the first octet and up to 2 octets for
-server purposes in a maximum-length connection ID.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.2.1-3">The configuration agent selects a divisor that MUST be larger than the number of
-servers.  It SHOULD be large enough to accommodate reasonable increases in the
-number of servers. The divisor MUST be an odd integer so certain addition
-operations do not always produce an even number.<a href="#section-4.2.1-3" class="pilcrow">¶</a></p>
-<p id="section-4.2.1-4">The configuration agent also assigns each server a "modulus", an integer between
-0 and the divisor minus 1. These MUST be unique for each server, and SHOULD be
-distributed across the entire number space between zero and the divisor.<a href="#section-4.2.1-4" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="load-balancer-actions-1">
-<section id="section-4.2.2">
-          <h4 id="name-load-balancer-actions-2">
-<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-load-balancer-actions-2" class="section-name selfRef">Load Balancer Actions</a>
-          </h4>
-<p id="section-4.2.2-1">Upon receipt of a QUIC packet, the load balancer extracts the selected bits of
-the Server CID and expresses them as an unsigned integer of that length.  The
-load balancer then divides the result by the chosen divisor. The modulus of this
-operation maps to the modulus for the destination server.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2.2-2">Note that any Server CID that contains a server's modulus, plus an arbitrary
-integer multiple of the divisor, in the routing bits is routable to that server
-regardless of the contents of the non-routing bits. Outside observers that do
-not know the divisor or the routing bits will therefore have difficulty
-identifying that two Server CIDs route to the same server.<a href="#section-4.2.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2.2-3">Note also that not all Connection IDs are necessarily routable, as the computed
-modulus may not match one assigned to any server. These DCIDs are non-compliant
-as described above.<a href="#section-4.2.2-3" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="server-actions-1">
-<section id="section-4.2.3">
-          <h4 id="name-server-actions-2">
-<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-server-actions-2" class="section-name selfRef">Server Actions</a>
-          </h4>
-<p id="section-4.2.3-1">The server chooses a connection ID length.  This MUST contain all of the routing
-bits and MUST be at least 9 octets to provide adequate entropy.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.2.3-2">When a server needs a new connection ID, it adds an arbitrary nonnegative
-integer multiple of the divisor to its modulus, without exceeding the maximum
-integer value implied by the number of routing bits. The choice of multiple
-should appear random within these constraints.<a href="#section-4.2.3-2" class="pilcrow">¶</a></p>
-<p id="section-4.2.3-3">The server encodes the result in the routing bits. It MAY put any other value
-into bits that used neither for routing nor config rotation.  These bits
-SHOULD appear random to observers.<a href="#section-4.2.3-3" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
-<div id="stream-cipher-cid-algorithm">
-<section id="section-4.3">
-        <h3 id="name-stream-cipher-cid-algorithm">
-<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-stream-cipher-cid-algorithm" class="section-name selfRef">Stream Cipher CID Algorithm</a>
-        </h3>
-<p id="section-4.3-1">The Stream Cipher CID algorithm provides true cryptographic protection, rather
-than mere obfuscation, at the cost of additional per-packet processing at the
-load balancer to decrypt every incoming connection ID. The CID format is
-depicted below.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<span id="name-stream-cipher-cid-format"></span><div id="stream-cipher-cid-format">
-<figure id="figure-4">
-          <div class="artwork art-text alignLeft" id="section-4.3-2.1">
 <pre>
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1598,109 +1493,109 @@ depicted below.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 </div>
-<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-stream-cipher-cid-format" class="selfRef">Stream Cipher CID Format</a>
           </figcaption></figure>
 </div>
-<div id="configuration-agent-actions-2">
-<section id="section-4.3.1">
-          <h4 id="name-configuration-agent-actions-3">
-<a href="#section-4.3.1" class="section-number selfRef">4.3.1. </a><a href="#name-configuration-agent-actions-3" class="section-name selfRef">Configuration Agent Actions</a>
+<div id="configuration-agent-actions-1">
+<section id="section-4.2.1">
+          <h4 id="name-configuration-agent-actions-2">
+<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-configuration-agent-actions-2" class="section-name selfRef">Configuration Agent Actions</a>
           </h4>
-<p id="section-4.3.1-1">The configuration agent assigns a server ID to every server in its pool, and
+<p id="section-4.2.1-1">The configuration agent assigns a server ID to every server in its pool, and
 determines a server ID length (in octets) sufficiently large to encode all
-server IDs, including potential future servers.<a href="#section-4.3.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.3.1-2">The configuration agent also selects a nonce length and an 16-octet AES-ECB key
+server IDs, including potential future servers.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-2">The configuration agent also selects a nonce length and an 16-octet AES-ECB key
 to use for connection ID decryption.  The nonce length MUST be at least 8 octets
 and no more than 16 octets. The nonce length and server ID length MUST sum to 19
-or fewer octets.<a href="#section-4.3.1-2" class="pilcrow">¶</a></p>
+or fewer octets.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="stream-cipher-load-balancer-actions">
-<section id="section-4.3.2">
-          <h4 id="name-load-balancer-actions-3">
-<a href="#section-4.3.2" class="section-number selfRef">4.3.2. </a><a href="#name-load-balancer-actions-3" class="section-name selfRef">Load Balancer Actions</a>
+<section id="section-4.2.2">
+          <h4 id="name-load-balancer-actions-2">
+<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-load-balancer-actions-2" class="section-name selfRef">Load Balancer Actions</a>
           </h4>
-<p id="section-4.3.2-1">Upon receipt of a QUIC packet, the load balancer extracts as many of the
+<p id="section-4.2.2-1">Upon receipt of a QUIC packet, the load balancer extracts as many of the
 earliest octets from the destination connection ID as necessary to match the
-nonce length. The server ID immediately follows.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.3.2-2">The load balancer decrypts the nonce and the server ID using the following three
-pass algorithm:<a href="#section-4.3.2-2" class="pilcrow">¶</a></p>
+nonce length. The server ID immediately follows.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-2">The load balancer decrypts the nonce and the server ID using the following three
+pass algorithm:<a href="#section-4.2.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.3.2-3.1">Pass 1:  The load balancer decrypts the server ID using 128-bit AES Electronic
+<li class="normal" id="section-4.2.2-3.1">Pass 1:  The load balancer decrypts the server ID using 128-bit AES Electronic
 Codebook (ECB) mode, much like QUIC header protection. The encrypted nonce
 octets are zero-padded to 16 octets.  AES-ECB encrypts this encrypted nonce
 using its key to generate a mask which it applies to the encrypted server id.
 This provides an intermediate value of the server ID, referred to as server-id
-intermediate.<a href="#section-4.3.2-3.1" class="pilcrow">¶</a>
+intermediate.<a href="#section-4.2.2-3.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-4.3.2-4">server_id_intermediate = encrypted_server_id ^ AES-ECB(key, padded-encrypted-nonce)<a href="#section-4.3.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-4">server_id_intermediate = encrypted_server_id ^ AES-ECB(key, padded-encrypted-nonce)<a href="#section-4.2.2-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.3.2-5.1">Pass 2:  The load balancer decrypts the nonce octets using 128-bit AES
+<li class="normal" id="section-4.2.2-5.1">Pass 2:  The load balancer decrypts the nonce octets using 128-bit AES
 ECB mode, using the server-id intermediate as "nonce" for this pass. The
 server-id intermediate octets are zero-padded to 16 octets.  AES-ECB encrypts
 this padded server-id intermediate using its key to generate a mask which it
-applies to the encrypted nonce. This provides the decrypted nonce value.<a href="#section-4.3.2-5.1" class="pilcrow">¶</a>
+applies to the encrypted nonce. This provides the decrypted nonce value.<a href="#section-4.2.2-5.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-4.3.2-6">nonce = encrypted_nonce ^ AES-ECB(key, padded-server_id_intermediate)<a href="#section-4.3.2-6" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-6">nonce = encrypted_nonce ^ AES-ECB(key, padded-server_id_intermediate)<a href="#section-4.2.2-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.3.2-7.1">Pass 3:  The load balancer decrypts the server ID using 128-bit AES ECB mode.
+<li class="normal" id="section-4.2.2-7.1">Pass 3:  The load balancer decrypts the server ID using 128-bit AES ECB mode.
 The nonce octets are zero-padded to 16 octets.  AES-ECB encrypts this nonce
 using its key to generate a mask which it applies to the intermediate server id.
-This provides the decrypted server ID.<a href="#section-4.3.2-7.1" class="pilcrow">¶</a>
+This provides the decrypted server ID.<a href="#section-4.2.2-7.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-4.3.2-8">server_id = server_id_intermediate ^ AES-ECB(key, padded-nonce)<a href="#section-4.3.2-8" class="pilcrow">¶</a></p>
-<p id="section-4.3.2-9">For example, if the nonce length is 10 octets and the server ID length is 2
+<p id="section-4.2.2-8">server_id = server_id_intermediate ^ AES-ECB(key, padded-nonce)<a href="#section-4.2.2-8" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-9">For example, if the nonce length is 10 octets and the server ID length is 2
 octets, the connection ID can be as small as 13 octets.  The load balancer uses
 the the second through eleventh octets of the connection ID for the nonce,
 zero-pads it to 16 octets, uses xors the result with the twelfth and thirteenth
 octet. The result is padded with 14 octets of zeros and encrypted to obtain a
 mask that is xored with the nonce octets. Finally, the nonce octets are padded
 with six octets of zeros, encrypted, and the first two octets xored with the
-server ID octets to obtain the actual server ID.<a href="#section-4.3.2-9" class="pilcrow">¶</a></p>
-<p id="section-4.3.2-10">This three-pass algorithm is a simplified version of the FFX algorithm, with
+server ID octets to obtain the actual server ID.<a href="#section-4.2.2-9" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-10">This three-pass algorithm is a simplified version of the FFX algorithm, with
 the property that each encrypted nonce value depends on all server ID bits, and
 each encrypted server ID bit depends on all nonce bits and all server ID bits.
 This mitigates attacks against stream ciphers in which attackers simply flip
-encrypted server-ID bits.<a href="#section-4.3.2-10" class="pilcrow">¶</a></p>
-<p id="section-4.3.2-11">The output of the decryption is the server ID that the load balancer uses for
-routing.<a href="#section-4.3.2-11" class="pilcrow">¶</a></p>
+encrypted server-ID bits.<a href="#section-4.2.2-10" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-11">The output of the decryption is the server ID that the load balancer uses for
+routing.<a href="#section-4.2.2-11" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="server-actions-2">
-<section id="section-4.3.3">
-          <h4 id="name-server-actions-3">
-<a href="#section-4.3.3" class="section-number selfRef">4.3.3. </a><a href="#name-server-actions-3" class="section-name selfRef">Server Actions</a>
+<div id="server-actions-1">
+<section id="section-4.2.3">
+          <h4 id="name-server-actions-2">
+<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-server-actions-2" class="section-name selfRef">Server Actions</a>
           </h4>
-<p id="section-4.3.3-1">When generating a routable connection ID, the server writes arbitrary bits into
+<p id="section-4.2.3-1">When generating a routable connection ID, the server writes arbitrary bits into
 its nonce octets, and its provided server ID into the server ID octets. Servers
 MAY opt to have a longer connection ID beyond the nonce and server ID. The
 additional bits MAY encode additional information, but SHOULD appear essentially
-random to observers.<a href="#section-4.3.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.3.3-2">If the decrypted nonce bits increase monotonically, that guarantees that nonces
-are not reused between connection IDs from the same server.<a href="#section-4.3.3-2" class="pilcrow">¶</a></p>
-<p id="section-4.3.3-3">The server encrypts the server ID using exactly the algorithm as described in
-<a href="#stream-cipher-load-balancer-actions" class="xref">Section 4.3.2</a>, performing the three passes
-in reverse order.<a href="#section-4.3.3-3" class="pilcrow">¶</a></p>
+random to observers.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-2">If the decrypted nonce bits increase monotonically, that guarantees that nonces
+are not reused between connection IDs from the same server.<a href="#section-4.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-3">The server encrypts the server ID using exactly the algorithm as described in
+<a href="#stream-cipher-load-balancer-actions" class="xref">Section 4.2.2</a>, performing the three passes
+in reverse order.<a href="#section-4.2.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="block-cipher-cid-algorithm">
-<section id="section-4.4">
+<section id="section-4.3">
         <h3 id="name-block-cipher-cid-algorithm">
-<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-block-cipher-cid-algorithm" class="section-name selfRef">Block Cipher CID Algorithm</a>
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-block-cipher-cid-algorithm" class="section-name selfRef">Block Cipher CID Algorithm</a>
         </h3>
-<p id="section-4.4-1">The Block Cipher CID Algorithm, by using a full 16 octets of plaintext and a
+<p id="section-4.3-1">The Block Cipher CID Algorithm, by using a full 16 octets of plaintext and a
 128-bit cipher, provides higher cryptographic protection and detection of
 non-compliant connection IDs. However, it also requires connection IDs of at
-least 17 octets, increasing overhead of client-to-server packets.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+least 17 octets, increasing overhead of client-to-server packets.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <span id="name-block-cipher-cid-format"></span><div id="block-cipher-cid-format">
-<figure id="figure-5">
-          <div class="artwork art-text alignLeft" id="section-4.4-2.1">
+<figure id="figure-4">
+          <div class="artwork art-text alignLeft" id="section-4.3-2.1">
 <pre>
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1713,52 +1608,52 @@ least 17 octets, increasing overhead of client-to-server packets.<a href="#secti
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-block-cipher-cid-format" class="selfRef">Block Cipher CID Format</a>
           </figcaption></figure>
 </div>
-<div id="configuration-agent-actions-3">
-<section id="section-4.4.1">
-          <h4 id="name-configuration-agent-actions-4">
-<a href="#section-4.4.1" class="section-number selfRef">4.4.1. </a><a href="#name-configuration-agent-actions-4" class="section-name selfRef">Configuration Agent Actions</a>
+<div id="configuration-agent-actions-2">
+<section id="section-4.3.1">
+          <h4 id="name-configuration-agent-actions-3">
+<a href="#section-4.3.1" class="section-number selfRef">4.3.1. </a><a href="#name-configuration-agent-actions-3" class="section-name selfRef">Configuration Agent Actions</a>
           </h4>
-<p id="section-4.4.1-1">The configuration agent assigns a server ID to every server in its pool, and
+<p id="section-4.3.1-1">The configuration agent assigns a server ID to every server in its pool, and
 determines a server ID length (in octets) sufficiently large to encode all
 server IDs, including potential future servers.  The server ID will start in the
 second octet of the decrypted connection ID and occupy continuous octets beyond
-that.<a href="#section-4.4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.4.1-2">They server ID length MUST be no more than 16 octets and SHOULD sum to no more
+that.<a href="#section-4.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.3.1-2">They server ID length MUST be no more than 16 octets and SHOULD sum to no more
 than 12 octets, to provide servers adequate space to encode their own opaque
-data.<a href="#section-4.4.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.4.1-3">The configuration agent also selects an 16-octet AES-ECB key to use for
-connection ID decryption.<a href="#section-4.4.1-3" class="pilcrow">¶</a></p>
+data.<a href="#section-4.3.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.3.1-3">The configuration agent also selects an 16-octet AES-ECB key to use for
+connection ID decryption.<a href="#section-4.3.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="load-balancer-actions-2">
-<section id="section-4.4.2">
-          <h4 id="name-load-balancer-actions-4">
-<a href="#section-4.4.2" class="section-number selfRef">4.4.2. </a><a href="#name-load-balancer-actions-4" class="section-name selfRef">Load Balancer Actions</a>
+<div id="load-balancer-actions-1">
+<section id="section-4.3.2">
+          <h4 id="name-load-balancer-actions-3">
+<a href="#section-4.3.2" class="section-number selfRef">4.3.2. </a><a href="#name-load-balancer-actions-3" class="section-name selfRef">Load Balancer Actions</a>
           </h4>
-<p id="section-4.4.2-1">Upon receipt of a QUIC packet, the load balancer reads the first octet to
+<p id="section-4.3.2-1">Upon receipt of a QUIC packet, the load balancer reads the first octet to
 obtain the config rotation bits. It then decrypts the subsequent 16 octets using
-AES-ECB decryption and the chosen key.<a href="#section-4.4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.4.2-2">The decrypted plaintext contains the server id and opaque server data in that
-order. The load balancer uses the server ID octets for routing.<a href="#section-4.4.2-2" class="pilcrow">¶</a></p>
+AES-ECB decryption and the chosen key.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.3.2-2">The decrypted plaintext contains the server id and opaque server data in that
+order. The load balancer uses the server ID octets for routing.<a href="#section-4.3.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="server-actions-3">
-<section id="section-4.4.3">
-          <h4 id="name-server-actions-4">
-<a href="#section-4.4.3" class="section-number selfRef">4.4.3. </a><a href="#name-server-actions-4" class="section-name selfRef">Server Actions</a>
+<div id="server-actions-2">
+<section id="section-4.3.3">
+          <h4 id="name-server-actions-3">
+<a href="#section-4.3.3" class="section-number selfRef">4.3.3. </a><a href="#name-server-actions-3" class="section-name selfRef">Server Actions</a>
           </h4>
-<p id="section-4.4.3-1">When generating a routable connection ID, the server MUST choose a connection ID
+<p id="section-4.3.3-1">When generating a routable connection ID, the server MUST choose a connection ID
 length between 17 and 20 octets. The server writes its provided server ID into
 the server ID octets and arbitrary bits into the remaining bits. These arbitrary
 bits MAY encode additional information. Bits in the eighteenth, nineteenth, and
 twentieth octets SHOULD appear essentially random to observers. The first octet
-is reserved as described in <a href="#first-octet" class="xref">Section 3</a>.<a href="#section-4.4.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.4.3-2">The server then encrypts the second through seventeenth octets using the 128-bit
-AES-ECB cipher.<a href="#section-4.4.3-2" class="pilcrow">¶</a></p>
+is reserved as described in <a href="#first-octet" class="xref">Section 3</a>.<a href="#section-4.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3.3-2">The server then encrypts the second through seventeenth octets using the 128-bit
+AES-ECB cipher.<a href="#section-4.3.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1841,10 +1736,10 @@ server must be configured to accept this service and know which QUIC versions
 the retry service supports. The scheme uses the first bit of the token to
 distinguish between tokens from Retry packets (codepoint '0') and tokens from
 NEW_TOKEN frames (codepoint '1').<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<div id="configuration-agent-actions-4">
+<div id="configuration-agent-actions-3">
 <section id="section-6.2.1">
-          <h4 id="name-configuration-agent-actions-5">
-<a href="#section-6.2.1" class="section-number selfRef">6.2.1. </a><a href="#name-configuration-agent-actions-5" class="section-name selfRef">Configuration Agent Actions</a>
+          <h4 id="name-configuration-agent-actions-4">
+<a href="#section-6.2.1" class="section-number selfRef">6.2.1. </a><a href="#name-configuration-agent-actions-4" class="section-name selfRef">Configuration Agent Actions</a>
           </h4>
 <p id="section-6.2.1-1">The configuration agent distributes a list of QUIC versions to be served by the
 Retry Service.<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
@@ -1865,7 +1760,7 @@ Note that this and other requirements above severely restrict the operational
 conditions in which a no-shared-state retry service can safely operate.<a href="#section-6.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-6.2.2-3">Retry tokens generated by the service MUST have the format below.<a href="#section-6.2.2-3" class="pilcrow">¶</a></p>
 <span id="name-format-of-non-shared-state-"></span><div id="nss-retry-service-token-format">
-<figure id="figure-6">
+<figure id="figure-5">
             <div class="artwork art-text alignLeft" id="section-6.2.2-4.1">
 <pre>
 0                   1                   2                   3
@@ -1885,7 +1780,7 @@ conditions in which a no-shared-state retry service can safely operate.<a href="
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 </div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
 <a href="#name-format-of-non-shared-state-" class="selfRef">Format of non-shared-state retry service tokens</a>
             </figcaption></figure>
 </div>
@@ -1962,7 +1857,7 @@ following format. This format is the cleartext version. On the wire, these
 fields are encrypted using an AES-ECB cipher and the token key. If the token is
 not a multiple of 16 octets, the last block is padded with zeroes.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
 <span id="name-cleartext-format-of-shared-"></span><div id="ss-retry-token-format">
-<figure id="figure-7">
+<figure id="figure-6">
           <div class="artwork art-text alignLeft" id="section-6.3-4.1">
 <pre>
 0                   1                   2                   3
@@ -2000,7 +1895,7 @@ not a multiple of 16 octets, the last block is padded with zeroes.<a href="#sect
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 </div>
-<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-cleartext-format-of-shared-" class="selfRef">Cleartext format of shared-state retry tokens</a>
           </figcaption></figure>
 </div>
@@ -2024,10 +1919,10 @@ such as congestion window, RTT, or MTU. Opaque data SHOULD also allow servers
 to distinguish between retry tokens (which trigger use of the
 original_destination_connection_id transport parameter) and NEW_TOKEN frame
 tokens.<a href="#section-6.3-12" class="pilcrow">¶</a></p>
-<div id="configuration-agent-actions-5">
+<div id="configuration-agent-actions-4">
 <section id="section-6.3.1">
-          <h4 id="name-configuration-agent-actions-6">
-<a href="#section-6.3.1" class="section-number selfRef">6.3.1. </a><a href="#name-configuration-agent-actions-6" class="section-name selfRef">Configuration Agent Actions</a>
+          <h4 id="name-configuration-agent-actions-5">
+<a href="#section-6.3.1" class="section-number selfRef">6.3.1. </a><a href="#name-configuration-agent-actions-5" class="section-name selfRef">Configuration Agent Actions</a>
           </h4>
 <p id="section-6.3.1-1">The configuration agent generates and distributes a "token key."<a href="#section-6.3.1-1" class="pilcrow">¶</a></p>
 </section>
@@ -2079,22 +1974,20 @@ and guarantee explicit consent of the server.<a href="#section-7-1" class="pilcr
 parameters for that algorithm.<a href="#section-7-2" class="pilcrow">¶</a></p>
 <p id="section-7-3">For Plaintext CID Routing, this consists of the Server ID and the routing bytes.
 The Server ID is unique to each server, and the routing bytes are global.<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">For Obfuscated CID Routing, this consists of the Routing Bits, Divisor, and
-Modulus. The Modulus is unique to each server, but the others MUST be global.<a href="#section-7-4" class="pilcrow">¶</a></p>
-<p id="section-7-5">For Stream Cipher CID Routing, this consists of the Server ID, Server ID Length,
+<p id="section-7-4">For Stream Cipher CID Routing, this consists of the Server ID, Server ID Length,
 Key, and Nonce Length.  The Server ID is unique to each server, but the others
 MUST be global. The authentication token MUST be distributed out of band for
-this algorithm to operate.<a href="#section-7-5" class="pilcrow">¶</a></p>
-<p id="section-7-6">For Block Cipher CID Routing, this consists of the Server ID, Server ID Length,
+this algorithm to operate.<a href="#section-7-4" class="pilcrow">¶</a></p>
+<p id="section-7-5">For Block Cipher CID Routing, this consists of the Server ID, Server ID Length,
 Key, and Zero-Padding Length. The Server ID is unique to each server, but the
-others MUST be global.<a href="#section-7-6" class="pilcrow">¶</a></p>
-<p id="section-7-7">A full QUIC-LB configuration MUST also specify the information content of the
-first CID octet and the presence and mode of any Retry Service.<a href="#section-7-7" class="pilcrow">¶</a></p>
-<p id="section-7-8">The following pseudocode describes the data items necessary to store a full
+others MUST be global.<a href="#section-7-5" class="pilcrow">¶</a></p>
+<p id="section-7-6">A full QUIC-LB configuration MUST also specify the information content of the
+first CID octet and the presence and mode of any Retry Service.<a href="#section-7-6" class="pilcrow">¶</a></p>
+<p id="section-7-7">The following pseudocode describes the data items necessary to store a full
 QUIC-LB configuration at the server. It is meant to describe the conceptual
 range and not specify the presentation of such configuration in an internet
-packet. The comments signify the range of acceptable values where applicable.<a href="#section-7-8" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-7-9">
+packet. The comments signify the range of acceptable values where applicable.<a href="#section-7-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="section-7-8">
 <pre>
  uint2    config_rotation_bits;
  boolean  first_octet_encodes_cid_length;
@@ -2104,7 +1997,7 @@ packet. The comments signify the range of acceptable values where applicable.<a 
      case non_shared_state: uint32 list_of_quic_versions[];
      case shared_state:     uint8 key[16];
  } retry_service_config;
- enum     { none, plaintext, obfuscated, stream_cipher, block_cipher }
+ enum     { none, plaintext, stream_cipher, block_cipher }
                    routing_algorithm;
  select (routing_algorithm) {
      case none: null;
@@ -2112,11 +2005,6 @@ packet. The comments signify the range of acceptable values where applicable.<a 
          uint8 server_id_length; /* 1..19 */
          uint8 server_id[server_id_length];
      } plaintext_config;
-     case obfuscated: struct {
-         uint8  routing_bit_mask[19];
-         uint16 divisor; /* Must be odd */
-         uint16 modulus; /* 0..(divisor - 1) */
-     } obfuscated_config;
      case stream_cipher: struct {
          uint8  nonce_length; /* 8..16 */
          uint8  server_id_length; /* 1..(19 - nonce_length) */
@@ -2129,7 +2017,7 @@ packet. The comments signify the range of acceptable values where applicable.<a 
          uint8  key[16];
      } block_cipher_config;
 } routing_algorithm_config;
-</pre><a href="#section-7-9" class="pilcrow">¶</a>
+</pre><a href="#section-7-8" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2241,10 +2129,9 @@ frustrate any analysis of server ID encoding have diminishing returns.<a href="#
 aggressively simulate migration to obtain a large sample of IDs that map to the
 same server. It could then apply analytical techniques to try to obtain the
 server encoding.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
-<p id="section-10.1-2">The Stream and Block Cipher CID algorithms provide robust entropy to making any
-sort of linkage.  The Obfuscated CID obscures the mapping and prevents trivial
-brute-force attacks to determine the routing parameters, but does not provide
-robust protection against sophisticated attacks.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
+<p id="section-10.1-2">The Stream and Block Cipher CID algorithms provide robust protection against
+any sort of linkage. The Plaintext CID algorithm makes no attempt to protect
+this encoding.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
 <p id="section-10.1-3">Were this analysis to obtain the server encoding, then on-path observers might
 apply this analysis to correlating different client IP addresses.<a href="#section-10.1-3" class="pilcrow">¶</a></p>
 </section>
@@ -2283,11 +2170,10 @@ servers. An attacker could then simply become a customer, obtain the
 configuration, and then extract server IDs of other customers' connections at
 will.<a href="#section-10.4-1" class="pilcrow">¶</a></p>
 <p id="section-10.4-2">To avoid this, the configuration agent SHOULD issue QUIC-LB configurations to
-mutually distrustful servers that have different keys (for the block cipher or
-stream cipher algorithms) or routing masks and divisors (for the obfuscated
-algorithm). The load balancers can distinguish these configurations by external
+mutually distrustful servers that have different keys for encryption
+algorithms. The load balancers can distinguish these configurations by external
 IP address, or by assigning different values to the config rotation bits
-(<a href="#config-rotation" class="xref">Section 3.1</a>). Note that either solution has a privay impact; see
+(<a href="#config-rotation" class="xref">Section 3.1</a>). Note that either solution has a privacy impact; see
 <a href="#multiple-configs" class="xref">Section 10.3</a>.<a href="#section-10.4-2" class="pilcrow">¶</a></p>
 <p id="section-10.4-3">These techniques are not necessary for the plaintext algorithm, as it does not
 attempt to conceal the server ID.<a href="#section-10.4-3" class="pilcrow">¶</a></p>
@@ -2362,45 +2248,12 @@ possible connection IDs for any given set of parameters. However, every
 connection ID should result in a unique server ID. The following connection
 IDs can be used to verify that a load balancer implementation extracts the
 correct server ID.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
-<div id="obfuscated-connection-id-algorithm">
+<div id="plaintext-connection-id-algorithm">
 <section id="section-a.1">
-        <h2 id="name-obfuscated-connection-id-al">
-<a href="#section-a.1" class="section-number selfRef">A.1. </a><a href="#name-obfuscated-connection-id-al" class="section-name selfRef">Obfuscated Connection ID Algorithm</a>
+        <h2 id="name-plaintext-connection-id-alg">
+<a href="#section-a.1" class="section-number selfRef">A.1. </a><a href="#name-plaintext-connection-id-alg" class="section-name selfRef">Plaintext Connection ID Algorithm</a>
         </h2>
-<p id="section-a.1-1">The following section lists a set of OCID load balancer configuration, followed
-by five CIDs from which the load balancer can extract the server ID.<a href="#section-a.1-1" class="pilcrow">¶</a></p>
-<p id="section-a.1-2">cr_bits 0x0 length_self_encoding: y bitmask ddc2f17788d77e3239b4ea divisor 345<a href="#section-a.1-2" class="pilcrow">¶</a></p>
-<p id="section-a.1-3">cid 0b72715d4745ce26cca8c750 sid b<br>
-cid 0b63a1785b6c0b0857225e96 sid 3f<br>
-cid 0b66474fa11329e6bb947818 sid 147<br>
-cid 0b34bd7c0882deb0252e2a58 sid ca<br>
-cid 0b0506ee792163bf9330dc0a sid 14d<a href="#section-a.1-3" class="pilcrow">¶</a></p>
-<p id="section-a.1-4">cr_bits 0x1 length_self_encoding: n bitmask 4855d35f5b88ddada153af61b6707ee646
-    divisor 301<a href="#section-a.1-4" class="pilcrow">¶</a></p>
-<p id="section-a.1-5">cid 542dc4c09e2d548e508dc825bbbca991c131 sid 8<br>
-cid 47988071f9f03a25c322cc6fb1d57151d26f sid 93<br>
-cid 6a13e05071f74cdb7d0dc24d72687b21e1d1 sid c0<br>
-cid 4323c129650c7ee66f37266044ef52e74ffa sid 60<br>
-cid 5e95f77e7e66891b57c224c5781c8c5dd8ba sid 8f<a href="#section-a.1-5" class="pilcrow">¶</a></p>
-<p id="section-a.1-6">cr_bits 0x0 length_self_encoding: y bitmask 9f98bd3df66338c2d2c6 divisor 459<a href="#section-a.1-6" class="pilcrow">¶</a></p>
-<p id="section-a.1-7">cid 0ad52216e7798c28340fd6 sid 125<br>
-cid 0a78f8ecbd087083639f94 sid 4b<br>
-cid 0ac7e70a5fe6b353b824aa sid 12<br>
-cid 0af9612ae5ccba3ef98b81 sid d1<br>
-cid 0a94ab209ea1d2e1e23751 sid 5d<a href="#section-a.1-7" class="pilcrow">¶</a></p>
-<p id="section-a.1-8">cr_bits 0x2 length_self_encoding: n bitmask dfba93c4f98f57103f5ae331
-    divisor 461<a href="#section-a.1-8" class="pilcrow">¶</a></p>
-<p id="section-a.1-9">cid 8b70b8c69e40ef2f3f8937e817 sid d3<br>
-cid b1828830ea1789dab13a043795 sid 44<br>
-cid 90604a580baa3eb0a47812e490 sid 137<br>
-cid a5b4bc309337ff73e143ff6deb sid 9f<br>
-cid fce75c0a984a79d3b4af40d155 sid 127<a href="#section-a.1-9" class="pilcrow">¶</a></p>
-<p id="section-a.1-10">cr_bits 0x0 length_self_encoding: y bitmask 8320fefc5309f7aa670476 divisor 379<a href="#section-a.1-10" class="pilcrow">¶</a></p>
-<p id="section-a.1-11">cid 0bb110af53dca7295e7d4b7e sid 101<br>
-cid 0b0d284cdff364a634a4b93b sid e3<br>
-cid 0b82ff1555c4a95f9b198090 sid 14e<br>
-cid 0b7a427d3e508ad71e98b797 sid 14e<br>
-cid 0b71d1d4e3e3cd54d435b3fd sid eb<a href="#section-a.1-11" class="pilcrow">¶</a></p>
+<p id="section-a.1-1">TBD<a href="#section-a.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="stream-cipher-connection-id-algorithm">
@@ -2503,175 +2356,186 @@ cid:  93256308e3d349f8839dec840b0a90c7e7a1fc20 sid: 618b07791f<a href="#section-
       <h2 id="name-change-log">
 <a href="#section-appendix.c" class="section-number selfRef">Appendix C. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
       </h2>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-appendix.c-1.1">
+<ul class="ulEmpty normal">
+<li class="ulEmpty normal" id="section-appendix.c-1.1">
           <strong>RFC Editor's Note:</strong>  Please remove this section prior to
 publication of a final version of this document.<a href="#section-appendix.c-1.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<div id="since-draft-ietf-quic-load-balancers-03">
+<div id="since-draft-ietf-quic-load-balancers-04">
 <section id="section-c.1">
         <h2 id="name-since-draft-ietf-quic-load-">
-<a href="#section-c.1" class="section-number selfRef">C.1. </a><a href="#name-since-draft-ietf-quic-load-" class="section-name selfRef">since-draft-ietf-quic-load-balancers-03</a>
+<a href="#section-c.1" class="section-number selfRef">C.1. </a><a href="#name-since-draft-ietf-quic-load-" class="section-name selfRef">since draft-ietf-quic-load-balancers-04</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.1-1.1">Improved Config Rotation text<a href="#section-c.1-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.1-1.1">Deleted the Obfuscated CID algorithm<a href="#section-c.1-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.1-1.2">Added stream cipher test vectors<a href="#section-c.1-1.2" class="pilcrow">¶</a>
+        </ul>
+</section>
+</div>
+<div id="since-draft-ietf-quic-load-balancers-03">
+<section id="section-c.2">
+        <h2 id="name-since-draft-ietf-quic-load-b">
+<a href="#section-c.2" class="section-number selfRef">C.2. </a><a href="#name-since-draft-ietf-quic-load-b" class="section-name selfRef">since-draft-ietf-quic-load-balancers-03</a>
+        </h2>
+<ul class="normal">
+<li class="normal" id="section-c.2-1.1">Improved Config Rotation text<a href="#section-c.2-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-c.2-1.2">Added stream cipher test vectors<a href="#section-c.2-1.2" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-ietf-quic-load-balancers-02">
-<section id="section-c.2">
-        <h2 id="name-since-draft-ietf-quic-load-b">
-<a href="#section-c.2" class="section-number selfRef">C.2. </a><a href="#name-since-draft-ietf-quic-load-b" class="section-name selfRef">since-draft-ietf-quic-load-balancers-02</a>
+<section id="section-c.3">
+        <h2 id="name-since-draft-ietf-quic-load-ba">
+<a href="#section-c.3" class="section-number selfRef">C.3. </a><a href="#name-since-draft-ietf-quic-load-ba" class="section-name selfRef">since-draft-ietf-quic-load-balancers-02</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.2-1.1">Replaced stream cipher algorithm with three-pass version<a href="#section-c.2-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.3-1.1">Replaced stream cipher algorithm with three-pass version<a href="#section-c.3-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.2-1.2">Updated Retry format to encode info for required TPs<a href="#section-c.2-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.3-1.2">Updated Retry format to encode info for required TPs<a href="#section-c.3-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.2-1.3">Added discussion of version invariance<a href="#section-c.2-1.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.3-1.3">Added discussion of version invariance<a href="#section-c.3-1.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.2-1.4">Cleaned up text about config rotation<a href="#section-c.2-1.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.3-1.4">Cleaned up text about config rotation<a href="#section-c.3-1.4" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.2-1.5">Added Reset Oracle and limited configuration considerations<a href="#section-c.2-1.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.3-1.5">Added Reset Oracle and limited configuration considerations<a href="#section-c.3-1.5" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.2-1.6">Allow dropped long-header packets for known QUIC versions<a href="#section-c.2-1.6" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.3-1.6">Allow dropped long-header packets for known QUIC versions<a href="#section-c.3-1.6" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-ietf-quic-load-balancers-01">
-<section id="section-c.3">
-        <h2 id="name-since-draft-ietf-quic-load-ba">
-<a href="#section-c.3" class="section-number selfRef">C.3. </a><a href="#name-since-draft-ietf-quic-load-ba" class="section-name selfRef">since-draft-ietf-quic-load-balancers-01</a>
+<section id="section-c.4">
+        <h2 id="name-since-draft-ietf-quic-load-bal">
+<a href="#section-c.4" class="section-number selfRef">C.4. </a><a href="#name-since-draft-ietf-quic-load-bal" class="section-name selfRef">since-draft-ietf-quic-load-balancers-01</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.3-1.1">Test vectors for load balancer decoding<a href="#section-c.3-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.4-1.1">Test vectors for load balancer decoding<a href="#section-c.4-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.3-1.2">Deleted remnants of in-band protocol<a href="#section-c.3-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.4-1.2">Deleted remnants of in-band protocol<a href="#section-c.4-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.3-1.3">Light edit of Retry Services section<a href="#section-c.3-1.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.4-1.3">Light edit of Retry Services section<a href="#section-c.4-1.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.3-1.4">Discussed load balancer chains<a href="#section-c.3-1.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.4-1.4">Discussed load balancer chains<a href="#section-c.4-1.4" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-ietf-quic-load-balancers-00">
-<section id="section-c.4">
-        <h2 id="name-since-draft-ietf-quic-load-bal">
-<a href="#section-c.4" class="section-number selfRef">C.4. </a><a href="#name-since-draft-ietf-quic-load-bal" class="section-name selfRef">since-draft-ietf-quic-load-balancers-00</a>
+<section id="section-c.5">
+        <h2 id="name-since-draft-ietf-quic-load-bala">
+<a href="#section-c.5" class="section-number selfRef">C.5. </a><a href="#name-since-draft-ietf-quic-load-bala" class="section-name selfRef">since-draft-ietf-quic-load-balancers-00</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.4-1.1">Removed in-band protocol from the document<a href="#section-c.4-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.5-1.1">Removed in-band protocol from the document<a href="#section-c.5-1.1" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-duke-quic-load-balancers-06">
-<section id="section-c.5">
+<section id="section-c.6">
         <h2 id="name-since-draft-duke-quic-load-">
-<a href="#section-c.5" class="section-number selfRef">C.5. </a><a href="#name-since-draft-duke-quic-load-" class="section-name selfRef">Since draft-duke-quic-load-balancers-06</a>
+<a href="#section-c.6" class="section-number selfRef">C.6. </a><a href="#name-since-draft-duke-quic-load-" class="section-name selfRef">Since draft-duke-quic-load-balancers-06</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.5-1.1">Switch to IETF WG draft.<a href="#section-c.5-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.6-1.1">Switch to IETF WG draft.<a href="#section-c.6-1.1" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-duke-quic-load-balancers-05">
-<section id="section-c.6">
+<section id="section-c.7">
         <h2 id="name-since-draft-duke-quic-load-b">
-<a href="#section-c.6" class="section-number selfRef">C.6. </a><a href="#name-since-draft-duke-quic-load-b" class="section-name selfRef">Since draft-duke-quic-load-balancers-05</a>
+<a href="#section-c.7" class="section-number selfRef">C.7. </a><a href="#name-since-draft-duke-quic-load-b" class="section-name selfRef">Since draft-duke-quic-load-balancers-05</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.6-1.1">Editorial changes<a href="#section-c.6-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.7-1.1">Editorial changes<a href="#section-c.7-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.6-1.2">Made load balancer behavior independent of QUIC version<a href="#section-c.6-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.7-1.2">Made load balancer behavior independent of QUIC version<a href="#section-c.7-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.6-1.3">Got rid of token in stream cipher encoding, because server might not have it<a href="#section-c.6-1.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.7-1.3">Got rid of token in stream cipher encoding, because server might not have it<a href="#section-c.7-1.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.6-1.4">Defined "non-compliant DCID" and specified rules for handling them.<a href="#section-c.6-1.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.7-1.4">Defined "non-compliant DCID" and specified rules for handling them.<a href="#section-c.7-1.4" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.6-1.5">Added psuedocode for config schema<a href="#section-c.6-1.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.7-1.5">Added psuedocode for config schema<a href="#section-c.7-1.5" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-duke-quic-load-balancers-04">
-<section id="section-c.7">
+<section id="section-c.8">
         <h2 id="name-since-draft-duke-quic-load-ba">
-<a href="#section-c.7" class="section-number selfRef">C.7. </a><a href="#name-since-draft-duke-quic-load-ba" class="section-name selfRef">Since draft-duke-quic-load-balancers-04</a>
+<a href="#section-c.8" class="section-number selfRef">C.8. </a><a href="#name-since-draft-duke-quic-load-ba" class="section-name selfRef">Since draft-duke-quic-load-balancers-04</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.7-1.1">Added standard for retry services<a href="#section-c.7-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.8-1.1">Added standard for retry services<a href="#section-c.8-1.1" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-duke-quic-load-balancers-03">
-<section id="section-c.8">
+<section id="section-c.9">
         <h2 id="name-since-draft-duke-quic-load-bal">
-<a href="#section-c.8" class="section-number selfRef">C.8. </a><a href="#name-since-draft-duke-quic-load-bal" class="section-name selfRef">Since draft-duke-quic-load-balancers-03</a>
+<a href="#section-c.9" class="section-number selfRef">C.9. </a><a href="#name-since-draft-duke-quic-load-bal" class="section-name selfRef">Since draft-duke-quic-load-balancers-03</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.8-1.1">Renamed Plaintext CID algorithm as Obfuscated CID<a href="#section-c.8-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.9-1.1">Renamed Plaintext CID algorithm as Obfuscated CID<a href="#section-c.9-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.8-1.2">Added new Plaintext CID algorithm<a href="#section-c.8-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.9-1.2">Added new Plaintext CID algorithm<a href="#section-c.9-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.8-1.3">Updated to allow 20B CIDs<a href="#section-c.8-1.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.9-1.3">Updated to allow 20B CIDs<a href="#section-c.9-1.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.8-1.4">Added self-encoding of CID length<a href="#section-c.8-1.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.9-1.4">Added self-encoding of CID length<a href="#section-c.9-1.4" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-duke-quic-load-balancers-02">
-<section id="section-c.9">
+<section id="section-c.10">
         <h2 id="name-since-draft-duke-quic-load-bala">
-<a href="#section-c.9" class="section-number selfRef">C.9. </a><a href="#name-since-draft-duke-quic-load-bala" class="section-name selfRef">Since draft-duke-quic-load-balancers-02</a>
+<a href="#section-c.10" class="section-number selfRef">C.10. </a><a href="#name-since-draft-duke-quic-load-bala" class="section-name selfRef">Since draft-duke-quic-load-balancers-02</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.9-1.1">Added Config Rotation<a href="#section-c.9-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.10-1.1">Added Config Rotation<a href="#section-c.10-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.9-1.2">Added failover mode<a href="#section-c.9-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.10-1.2">Added failover mode<a href="#section-c.10-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.9-1.3">Tweaks to existing CID algorithms<a href="#section-c.9-1.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.10-1.3">Tweaks to existing CID algorithms<a href="#section-c.10-1.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.9-1.4">Added Block Cipher CID algorithm<a href="#section-c.9-1.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.10-1.4">Added Block Cipher CID algorithm<a href="#section-c.10-1.4" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.9-1.5">Reformatted QUIC-LB packets<a href="#section-c.9-1.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.10-1.5">Reformatted QUIC-LB packets<a href="#section-c.10-1.5" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-duke-quic-load-balancers-01">
-<section id="section-c.10">
+<section id="section-c.11">
         <h2 id="name-since-draft-duke-quic-load-balan">
-<a href="#section-c.10" class="section-number selfRef">C.10. </a><a href="#name-since-draft-duke-quic-load-balan" class="section-name selfRef">Since draft-duke-quic-load-balancers-01</a>
+<a href="#section-c.11" class="section-number selfRef">C.11. </a><a href="#name-since-draft-duke-quic-load-balan" class="section-name selfRef">Since draft-duke-quic-load-balancers-01</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.10-1.1">Complete rewrite<a href="#section-c.10-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.11-1.1">Complete rewrite<a href="#section-c.11-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.10-1.2">Supports multiple security levels<a href="#section-c.10-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.11-1.2">Supports multiple security levels<a href="#section-c.11-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.10-1.3">Lightweight messages<a href="#section-c.10-1.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.11-1.3">Lightweight messages<a href="#section-c.11-1.3" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-duke-quic-load-balancers-00">
-<section id="section-c.11">
+<section id="section-c.12">
         <h2 id="name-since-draft-duke-quic-load-balanc">
-<a href="#section-c.11" class="section-number selfRef">C.11. </a><a href="#name-since-draft-duke-quic-load-balanc" class="section-name selfRef">Since draft-duke-quic-load-balancers-00</a>
+<a href="#section-c.12" class="section-number selfRef">C.12. </a><a href="#name-since-draft-duke-quic-load-balanc" class="section-name selfRef">Since draft-duke-quic-load-balancers-00</a>
         </h2>
 <ul class="normal">
-<li class="normal" id="section-c.11-1.1">Converted to markdown<a href="#section-c.11-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-c.12-1.1">Converted to markdown<a href="#section-c.12-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-c.11-1.2">Added variable length connection IDs<a href="#section-c.11-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-c.12-1.2">Added variable length connection IDs<a href="#section-c.12-1.2" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
