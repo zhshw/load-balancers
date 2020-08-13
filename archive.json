@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-07-29T20:09:24.436065+00:00",
+  "timestamp": "2020-08-13T19:35:30.886721+00:00",
   "repo": "quicwg/load-balancers",
   "labels": [
     {
@@ -717,27 +717,58 @@
       "author": "william-zk",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "editorial"
+      ],
       "body": "Hi Author:\r\n    I have a little confused about 'configuration agent', from the description of draft, I think it should be a centralized control plane of 'load balancer' and 'server', but from the name 'agent', it seems like it should be a agent component which was used to receive message from control plane. So, what is the most correct definition of 'configuration agent'?",
       "createdAt": "2020-07-21T04:11:13Z",
-      "updatedAt": "2020-07-21T04:11:13Z",
+      "updatedAt": "2020-07-30T03:29:05Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "In the definitions section, it says: \"A \"configuration agent\" is\r\nthe entity that determines the QUIC-LB configuration parameters for the network\r\nand leverages some system to distribute that configuration.\"\r\n\r\nThe draft isn't really trying to define the architecture of the control plane. I'm not sure what the distinction is, for this spec, between being \"the control plane\" or something that \"receives messages from the control plane\". It is whatever is assigning server IDs.\r\n\r\nIs there other language that would make this clearer?\r\n",
+          "createdAt": "2020-07-29T20:14:56Z",
+          "updatedAt": "2020-07-29T20:14:56Z"
+        },
+        {
+          "author": "william-zk",
+          "authorAssociation": "NONE",
+          "body": "Um...I got it. My question comes from that we want to do an implementation about quic-lb, and contribute it to the nginx community, but for nginx, there are not any uniform centralized component to generate and distribute server ID, so we are confused with that if we should do a 'configuration agent' implementation. From your answer, we think that we can just open source quic-lb route ability, and provide a uniform server id usage api. ",
+          "createdAt": "2020-07-30T02:54:04Z",
+          "updatedAt": "2020-07-30T02:54:04Z"
+        },
+        {
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Ah. So the draft originally had an in-band config channel but the group pulled it out for several reasons. I am personally not sure how people will deploy configurations for QUIC-LB in the real world, but for now you probably can't go wrong with adding the parameters to a configuration interface and just having a human being start the process.\r\n\r\nI would suspect that open source QUIC servers would have a check box that says \"accept QUIC-LB configuration\" or something and then it would open a REST interface or whatever to accept it. I would love to hear from cloud providers to understand what config frameworks there are, but I suspect we're going to write something down in a draft somewhere.",
+          "createdAt": "2020-07-30T03:14:53Z",
+          "updatedAt": "2020-07-30T03:14:53Z"
+        },
+        {
+          "author": "william-zk",
+          "authorAssociation": "NONE",
+          "body": "> I would suspect that open source QUIC servers would have a check box that says \"accept QUIC-LB configuration\" or something and then it would open a REST interface or whatever to accept it. I would love to hear from cloud providers to understand what config frameworks there are, but I suspect we're going to write something down in a draft somewhere.\r\n\r\nAh,  maybe a brief introduction can be write into `1.1.  Terminology`\r\n\r\n\r\n",
+          "createdAt": "2020-07-30T03:29:05Z",
+          "updatedAt": "2020-07-30T03:29:05Z"
+        }
+      ]
     },
     {
       "number": 47,
       "id": "MDU6SXNzdWU2Njc3OTMyOTk=",
       "title": "Cut obfuscated server ID algorithm",
       "url": "https://github.com/quicwg/load-balancers/issues/47",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "As discussed at IETF 108.  Split from #8.",
       "createdAt": "2020-07-29T12:07:37Z",
-      "updatedAt": "2020-07-29T19:59:45Z",
-      "closedAt": null,
+      "updatedAt": "2020-08-13T19:34:58Z",
+      "closedAt": "2020-08-13T19:34:58Z",
       "comments": [
         {
           "author": "martinduke",
@@ -2405,6 +2436,68 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 48,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDU4NjY2Mjc0",
+      "title": "Deleted OCID",
+      "url": "https://github.com/quicwg/load-balancers/pull/48",
+      "state": "MERGED",
+      "author": "martinduke",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "by popular demand in #47.",
+      "createdAt": "2020-07-29T20:09:37Z",
+      "updatedAt": "2020-08-13T19:34:43Z",
+      "baseRepository": "quicwg/load-balancers",
+      "baseRefName": "master",
+      "baseRefOid": "b6126ba11dad17b160407a10ee48dedef0b0558b",
+      "headRepository": "quicwg/load-balancers",
+      "headRefName": "delete-ocid",
+      "headRefOid": "bfc9c0607e9000075eb000f5447ecc45051b4099",
+      "closedAt": "2020-08-13T19:34:41Z",
+      "mergedAt": "2020-08-13T19:34:41Z",
+      "mergedBy": "martinduke",
+      "mergeCommit": {
+        "oid": "385254d4ae8c9233c97195e3f99fc68b352a13f9"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDU3ODYwMzIz",
+          "commit": {
+            "abbreviatedOid": "b544436"
+          },
+          "author": "nibanks",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-07-29T20:11:21Z",
+          "updatedAt": "2020-07-29T20:11:21Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDU3OTQxMTI2",
+          "commit": {
+            "abbreviatedOid": "b544436"
+          },
+          "author": "huitema",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Yes, that works. Minor comment.",
+          "createdAt": "2020-07-29T22:26:09Z",
+          "updatedAt": "2020-07-29T22:27:07Z",
+          "comments": [
+            {
+              "originalPosition": 123,
+              "body": "Are you sure that \"provide robust entropy to making any sort of linkage\" is a valid English sentence? Would it be better to say \"provide robust entropy to defend against any sort of linkage\", or something like that?",
+              "createdAt": "2020-07-29T22:26:09Z",
+              "updatedAt": "2020-07-29T23:10:42Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
