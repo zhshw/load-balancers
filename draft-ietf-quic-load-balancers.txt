@@ -5,8 +5,8 @@
 QUIC                                                             M. Duke
 Internet-Draft                                         F5 Networks, Inc.
 Intended status: Standards Track                                N. Banks
-Expires: 14 February 2021                                      Microsoft
-                                                          13 August 2020
+Expires: 15 February 2021                                      Microsoft
+                                                          14 August 2020
 
 
             QUIC-LB: Generating Routable QUIC Connection IDs
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 1]
+Duke & Banks            Expires 15 February 2021                [Page 1]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
 
-   This Internet-Draft will expire on 14 February 2021.
+   This Internet-Draft will expire on 15 February 2021.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 2]
+Duke & Banks            Expires 15 February 2021                [Page 2]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -139,18 +139,17 @@ Internet-Draft                   QUIC-LB                     August 2020
      A.3.  Block Cipher Connection ID Algorithm  . . . . . . . . . .  27
    Appendix B.  Acknowledgments  . . . . . . . . . . . . . . . . . .  28
    Appendix C.  Change Log . . . . . . . . . . . . . . . . . . . . .  28
-     C.1.  since draft-ietf-quic-load-balancers-04 . . . . . . . . .  28
-     C.2.  since-draft-ietf-quic-load-balancers-03 . . . . . . . . .  28
-     C.3.  since-draft-ietf-quic-load-balancers-02 . . . . . . . . .  28
-     C.4.  since-draft-ietf-quic-load-balancers-01 . . . . . . . . .  28
-     C.5.  since-draft-ietf-quic-load-balancers-00 . . . . . . . . .  29
-     C.6.  Since draft-duke-quic-load-balancers-06 . . . . . . . . .  29
-     C.7.  Since draft-duke-quic-load-balancers-05 . . . . . . . . .  29
-     C.8.  Since draft-duke-quic-load-balancers-04 . . . . . . . . .  29
-     C.9.  Since draft-duke-quic-load-balancers-03 . . . . . . . . .  29
-     C.10. Since draft-duke-quic-load-balancers-02 . . . . . . . . .  29
-     C.11. Since draft-duke-quic-load-balancers-01 . . . . . . . . .  30
-     C.12. Since draft-duke-quic-load-balancers-00 . . . . . . . . .  30
+     C.1.  since-draft-ietf-quic-load-balancers-03 . . . . . . . . .  28
+     C.2.  since-draft-ietf-quic-load-balancers-02 . . . . . . . . .  28
+     C.3.  since-draft-ietf-quic-load-balancers-01 . . . . . . . . .  28
+     C.4.  since-draft-ietf-quic-load-balancers-00 . . . . . . . . .  29
+     C.5.  Since draft-duke-quic-load-balancers-06 . . . . . . . . .  29
+     C.6.  Since draft-duke-quic-load-balancers-05 . . . . . . . . .  29
+     C.7.  Since draft-duke-quic-load-balancers-04 . . . . . . . . .  29
+     C.8.  Since draft-duke-quic-load-balancers-03 . . . . . . . . .  29
+     C.9.  Since draft-duke-quic-load-balancers-02 . . . . . . . . .  29
+     C.10. Since draft-duke-quic-load-balancers-01 . . . . . . . . .  30
+     C.11. Since draft-duke-quic-load-balancers-00 . . . . . . . . .  30
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  30
 
 1.  Introduction
@@ -165,7 +164,8 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 3]
+
+Duke & Banks            Expires 15 February 2021                [Page 3]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -221,7 +221,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 4]
+Duke & Banks            Expires 15 February 2021                [Page 4]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -277,7 +277,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 5]
+Duke & Banks            Expires 15 February 2021                [Page 5]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -333,7 +333,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 6]
+Duke & Banks            Expires 15 February 2021                [Page 6]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -389,7 +389,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 7]
+Duke & Banks            Expires 15 February 2021                [Page 7]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -445,7 +445,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 8]
+Duke & Banks            Expires 15 February 2021                [Page 8]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -501,7 +501,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021                [Page 9]
+Duke & Banks            Expires 15 February 2021                [Page 9]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -557,7 +557,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 10]
+Duke & Banks            Expires 15 February 2021               [Page 10]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -613,7 +613,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 11]
+Duke & Banks            Expires 15 February 2021               [Page 11]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -669,7 +669,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 12]
+Duke & Banks            Expires 15 February 2021               [Page 12]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -725,7 +725,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 13]
+Duke & Banks            Expires 15 February 2021               [Page 13]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -781,7 +781,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 14]
+Duke & Banks            Expires 15 February 2021               [Page 14]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -837,7 +837,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 15]
+Duke & Banks            Expires 15 February 2021               [Page 15]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -893,7 +893,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 16]
+Duke & Banks            Expires 15 February 2021               [Page 16]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -949,7 +949,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 17]
+Duke & Banks            Expires 15 February 2021               [Page 17]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 18]
+Duke & Banks            Expires 15 February 2021               [Page 18]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 19]
+Duke & Banks            Expires 15 February 2021               [Page 19]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 20]
+Duke & Banks            Expires 15 February 2021               [Page 20]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 21]
+Duke & Banks            Expires 15 February 2021               [Page 21]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 22]
+Duke & Banks            Expires 15 February 2021               [Page 22]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 23]
+Duke & Banks            Expires 15 February 2021               [Page 23]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 24]
+Duke & Banks            Expires 15 February 2021               [Page 24]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 25]
+Duke & Banks            Expires 15 February 2021               [Page 25]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1453,7 +1453,7 @@ A.2.  Stream Cipher Connection ID Algorithm
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 26]
+Duke & Banks            Expires 15 February 2021               [Page 26]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1509,7 +1509,7 @@ A.3.  Block Cipher Connection ID Algorithm
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 27]
+Duke & Banks            Expires 15 February 2021               [Page 27]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
@@ -1536,17 +1536,15 @@ Appendix C.  Change Log
       *RFC Editor's Note:* Please remove this section prior to
       publication of a final version of this document.
 
-C.1.  since draft-ietf-quic-load-balancers-04
-
-   *  Deleted the Obfuscated CID algorithm
-
-C.2.  since-draft-ietf-quic-load-balancers-03
+C.1.  since-draft-ietf-quic-load-balancers-03
 
    *  Improved Config Rotation text
 
    *  Added stream cipher test vectors
 
-C.3.  since-draft-ietf-quic-load-balancers-02
+   *  Deleted the Obfuscated CID algorithm
+
+C.2.  since-draft-ietf-quic-load-balancers-02
 
    *  Replaced stream cipher algorithm with three-pass version
 
@@ -1560,17 +1558,17 @@ C.3.  since-draft-ietf-quic-load-balancers-02
 
    *  Allow dropped long-header packets for known QUIC versions
 
-C.4.  since-draft-ietf-quic-load-balancers-01
+C.3.  since-draft-ietf-quic-load-balancers-01
+
+   *  Test vectors for load balancer decoding
 
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 28]
+Duke & Banks            Expires 15 February 2021               [Page 28]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
-
-   *  Test vectors for load balancer decoding
 
    *  Deleted remnants of in-band protocol
 
@@ -1578,15 +1576,15 @@ Internet-Draft                   QUIC-LB                     August 2020
 
    *  Discussed load balancer chains
 
-C.5.  since-draft-ietf-quic-load-balancers-00
+C.4.  since-draft-ietf-quic-load-balancers-00
 
    *  Removed in-band protocol from the document
 
-C.6.  Since draft-duke-quic-load-balancers-06
+C.5.  Since draft-duke-quic-load-balancers-06
 
    *  Switch to IETF WG draft.
 
-C.7.  Since draft-duke-quic-load-balancers-05
+C.6.  Since draft-duke-quic-load-balancers-05
 
    *  Editorial changes
 
@@ -1600,11 +1598,11 @@ C.7.  Since draft-duke-quic-load-balancers-05
 
    *  Added psuedocode for config schema
 
-C.8.  Since draft-duke-quic-load-balancers-04
+C.7.  Since draft-duke-quic-load-balancers-04
 
    *  Added standard for retry services
 
-C.9.  Since draft-duke-quic-load-balancers-03
+C.8.  Since draft-duke-quic-load-balancers-03
 
    *  Renamed Plaintext CID algorithm as Obfuscated CID
 
@@ -1614,19 +1612,19 @@ C.9.  Since draft-duke-quic-load-balancers-03
 
    *  Added self-encoding of CID length
 
-C.10.  Since draft-duke-quic-load-balancers-02
+C.9.  Since draft-duke-quic-load-balancers-02
 
    *  Added Config Rotation
 
+   *  Added failover mode
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 29]
+
+Duke & Banks            Expires 15 February 2021               [Page 29]
 
 Internet-Draft                   QUIC-LB                     August 2020
 
-
-   *  Added failover mode
 
    *  Tweaks to existing CID algorithms
 
@@ -1634,7 +1632,7 @@ Internet-Draft                   QUIC-LB                     August 2020
 
    *  Reformatted QUIC-LB packets
 
-C.11.  Since draft-duke-quic-load-balancers-01
+C.10.  Since draft-duke-quic-load-balancers-01
 
    *  Complete rewrite
 
@@ -1642,7 +1640,7 @@ C.11.  Since draft-duke-quic-load-balancers-01
 
    *  Lightweight messages
 
-C.12.  Since draft-duke-quic-load-balancers-00
+C.11.  Since draft-duke-quic-load-balancers-00
 
    *  Converted to markdown
 
@@ -1677,4 +1675,6 @@ Authors' Addresses
 
 
 
-Duke & Banks            Expires 14 February 2021               [Page 30]
+
+
+Duke & Banks            Expires 15 February 2021               [Page 30]
