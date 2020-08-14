@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-08-13T19:35:30.886721+00:00",
+  "timestamp": "2020-08-14T18:15:51.747331+00:00",
   "repo": "quicwg/load-balancers",
   "labels": [
     {
@@ -713,7 +713,7 @@
       "id": "MDU6SXNzdWU2NjI1NTc4Njg=",
       "title": "A little confused about configuration agent",
       "url": "https://github.com/quicwg/load-balancers/issues/46",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "william-zk",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -722,8 +722,8 @@
       ],
       "body": "Hi Author:\r\n    I have a little confused about 'configuration agent', from the description of draft, I think it should be a centralized control plane of 'load balancer' and 'server', but from the name 'agent', it seems like it should be a agent component which was used to receive message from control plane. So, what is the most correct definition of 'configuration agent'?",
       "createdAt": "2020-07-21T04:11:13Z",
-      "updatedAt": "2020-07-30T03:29:05Z",
-      "closedAt": null,
+      "updatedAt": "2020-08-14T02:10:45Z",
+      "closedAt": "2020-08-14T02:10:45Z",
       "comments": [
         {
           "author": "martinduke",
@@ -752,6 +752,20 @@
           "body": "> I would suspect that open source QUIC servers would have a check box that says \"accept QUIC-LB configuration\" or something and then it would open a REST interface or whatever to accept it. I would love to hear from cloud providers to understand what config frameworks there are, but I suspect we're going to write something down in a draft somewhere.\r\n\r\nAh,  maybe a brief introduction can be write into `1.1.  Terminology`\r\n\r\n\r\n",
           "createdAt": "2020-07-30T03:29:05Z",
           "updatedAt": "2020-07-30T03:29:05Z"
+        },
+        {
+          "author": "martinduke",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "so this is already there:\r\nSec 1: \r\nWhile this document describes a small set of configuration parameters to make\r\nthe server mapping intelligible, the means of distributing these parameters\r\nbetween load balancers, servers, and other trusted intermediaries is out of its\r\nscope. There are numerous well-known infrastructures for distribution of\r\nconfiguration.\r\n\r\nSec 1.1\r\nA \"configuration agent\" is\r\nthe entity that determines the QUIC-LB configuration parameters for the network\r\nand leverages some system to distribute that configuration.\r\n\r\nIs this what you're looking for?",
+          "createdAt": "2020-08-13T19:48:52Z",
+          "updatedAt": "2020-08-13T19:48:52Z"
+        },
+        {
+          "author": "william-zk",
+          "authorAssociation": "NONE",
+          "body": "> so this is already there:\r\n> Sec 1:\r\n> While this document describes a small set of configuration parameters to make\r\n> the server mapping intelligible, the means of distributing these parameters\r\n> between load balancers, servers, and other trusted intermediaries is out of its\r\n> scope. There are numerous well-known infrastructures for distribution of\r\n> configuration.\r\n> \r\n> Sec 1.1\r\n> A \"configuration agent\" is\r\n> the entity that determines the QUIC-LB configuration parameters for the network\r\n> and leverages some system to distribute that configuration.\r\n> \r\n> Is this what you're looking for?\r\n\r\nOK, thanks for answering, I'd close this issue soon",
+          "createdAt": "2020-08-14T02:10:00Z",
+          "updatedAt": "2020-08-14T02:10:00Z"
         }
       ]
     },
