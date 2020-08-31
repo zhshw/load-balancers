@@ -748,10 +748,10 @@ Internet-Draft                   QUIC-LB                     August 2020
    its advertised IP address.  Through the use of a Retry packet, a
    token in subsequent client Initial packets, and the
    original_destination_connection_id transport parameter, servers
-   verify address ownership and clients verify that there is no "man in
-   the middle" generating Retry packets.
+   verify address ownership and clients verify that there is no on-path
+   attacker generating Retry packets.
 
-   As a trusted Retry Service is literally a "man in the middle," the
+   As a trusted Retry Service is literally an on-path entity, the
    service must communicate the original_destination_connection_id back
    to the server so that it can pass client verification.  It also must
    either verify the address itself (with the server trusting this
@@ -916,8 +916,8 @@ Internet-Draft                   QUIC-LB                     August 2020
    Initial packet to avoid authentication failure.  Forwarding the
    packet causes the server to respond without the
    original_destination_connection_id transport parameter, which
-   preserves the normal QUIC signal to the client that there is an
-   unauthorized man in the middle.
+   preserves the normal QUIC signal to the client that there is an on-
+   path attacker.
 
 6.2.3.  Server Requirements
 
