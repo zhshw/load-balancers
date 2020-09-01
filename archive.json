@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-08-31T16:05:57.357438+00:00",
+  "timestamp": "2020-09-01T15:50:19.127664+00:00",
   "repo": "quicwg/load-balancers",
   "labels": [
     {
@@ -847,7 +847,7 @@
       "labels": [],
       "body": "Dear sir,\r\nAs you know,  there is no bit in the cid to mark whether the cid encoded the server info or not.  In this case, no matter the server info encoded or not, the load balancer needs to  decrypt or decode the cid. Do you think this is a useless try when the packet is the first initial packet?  Do you think this is a useful idea to expand  the cid format to use the first bit to mark the cid encoded or not?   However, in this case, the client need to obey the rule.",
       "createdAt": "2020-08-27T13:17:16Z",
-      "updatedAt": "2020-08-31T15:59:29Z",
+      "updatedAt": "2020-09-01T12:27:46Z",
       "closedAt": null,
       "comments": [
         {
@@ -870,6 +870,13 @@
           "body": "No, this draft does not assume client cooperation at all. The very beginning of Section 4 explains how to handle client-generated CIDs.",
           "createdAt": "2020-08-31T15:59:29Z",
           "updatedAt": "2020-08-31T15:59:29Z"
+        },
+        {
+          "author": "Lingtaonju",
+          "authorAssociation": "NONE",
+          "body": "> No, this draft does not assume client cooperation at all. The very beginning of Section 4 explains how to handle client-generated CIDs.\r\n\r\nThanks for your reply. Actually, I understand your works and Section 4.\r\nHowever, my point is that , even this draft does not assume client cooperation at all,  this draft can suggest the client to generate a cid with 11  for the very first initial packet.\r\n\r\nThis is useful for QUIC-LB if client obeys the rule, if not , the Section 4 also works well. \r\n",
+          "createdAt": "2020-09-01T12:27:05Z",
+          "updatedAt": "2020-09-01T12:27:46Z"
         }
       ]
     },
@@ -2587,20 +2594,48 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NDcxMjM1Mzgx",
       "title": "New test vectors",
       "url": "https://github.com/quicwg/load-balancers/pull/49",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "martinduke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Updated the test vectors for the latest version of the spec, added PCID, and made them usable to test server implementations.",
       "createdAt": "2020-08-20T20:52:34Z",
-      "updatedAt": "2020-08-20T20:52:34Z",
+      "updatedAt": "2020-08-31T16:12:54Z",
       "baseRepository": "quicwg/load-balancers",
       "baseRefName": "master",
       "baseRefOid": "ca952dcf4a973c8df3c2efb9bcdfcbf8676bc581",
       "headRepository": "quicwg/load-balancers",
       "headRefName": "new-test-vectors",
       "headRefOid": "9f81662060ce61175903dd989e0cae35e5d35d75",
+      "closedAt": "2020-08-31T16:12:53Z",
+      "mergedAt": "2020-08-31T16:12:53Z",
+      "mergedBy": "martinduke",
+      "mergeCommit": {
+        "oid": "1dc88e31f72c4ddeff2a7cc20e69d4034cb31201"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 52,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDc2MzkzOTc5",
+      "title": "Update Noncompliant DCID text",
+      "url": "https://github.com/quicwg/load-balancers/pull/52",
+      "state": "OPEN",
+      "author": "martinduke",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Make it clear that the server has to provide the client with a compliant DCID if the client isn't already using one.",
+      "createdAt": "2020-08-31T16:11:30Z",
+      "updatedAt": "2020-09-01T15:49:46Z",
+      "baseRepository": "quicwg/load-balancers",
+      "baseRefName": "master",
+      "baseRefOid": "ca952dcf4a973c8df3c2efb9bcdfcbf8676bc581",
+      "headRepository": "quicwg/load-balancers",
+      "headRefName": "server-must-change",
+      "headRefOid": "c340a6f63e1e957953ab3acd3b629d238d60a416",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
